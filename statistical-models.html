@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Statistical Models | Notes of Statistics</title>
+  <meta name="description" content="The notes is based on Discovering Statistics Using R by Andy Field." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Statistical Models | Notes of Statistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The notes is based on Discovering Statistics Using R by Andy Field." />
+  <meta name="github-repo" content="zhilinsu/social-neuroscience" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Statistical Models | Notes of Statistics" />
+  
+  <meta name="twitter:description" content="The notes is based on Discovering Statistics Using R by Andy Field." />
+  
+
+<meta name="author" content="Zhilin Su" />
+
+
+<meta name="date" content="2020-02-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#correlation-research-methods"><i class="fa fa-check"></i><b>1.1</b> Correlation research methods</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#two-types-of-variation"><i class="fa fa-check"></i><b>1.2</b> Two types of variation</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#frequency-distributions"><i class="fa fa-check"></i><b>1.3</b> Frequency distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="statistical-models.html"><a href="statistical-models.html"><i class="fa fa-check"></i><b>2</b> Statistical Models</a><ul>
+<li class="chapter" data-level="2.1" data-path="statistical-models.html"><a href="statistical-models.html#why-do-we-build-statistical-models"><i class="fa fa-check"></i><b>2.1</b> Why do we build statistical models?</a></li>
+<li class="chapter" data-level="2.2" data-path="statistical-models.html"><a href="statistical-models.html#assessing-the-fit-of-a-simple-statistical-model-the-mean"><i class="fa fa-check"></i><b>2.2</b> Assessing the fit of a simple statistical model: the mean</a></li>
+<li class="chapter" data-level="2.3" data-path="statistical-models.html"><a href="statistical-models.html#the-general-equation-of-linear-statistical-models"><i class="fa fa-check"></i><b>2.3</b> The general equation of (linear) statistical models</a></li>
+<li class="chapter" data-level="2.4" data-path="statistical-models.html"><a href="statistical-models.html#inference-from-the-sample-to-the-population"><i class="fa fa-check"></i><b>2.4</b> Inference from the sample to the population</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="statistical-models.html"><a href="statistical-models.html#standard-error"><i class="fa fa-check"></i><b>2.4.1</b> Standard error</a></li>
+<li class="chapter" data-level="2.4.2" data-path="statistical-models.html"><a href="statistical-models.html#confidence-intervals"><i class="fa fa-check"></i><b>2.4.2</b> Confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="statistical-models.html"><a href="statistical-models.html#test-statistic統計檢定量"><i class="fa fa-check"></i><b>2.5</b> Test statistic（統計檢定量）</a></li>
+<li class="chapter" data-level="2.6" data-path="statistical-models.html"><a href="statistical-models.html#one--and-two-tailed-tests"><i class="fa fa-check"></i><b>2.6</b> One- and two-tailed tests</a></li>
+<li class="chapter" data-level="2.7" data-path="statistical-models.html"><a href="statistical-models.html#type-i-and-type-ii-errors"><i class="fa fa-check"></i><b>2.7</b> Type I and Type II errors</a></li>
+<li class="chapter" data-level="2.8" data-path="statistical-models.html"><a href="statistical-models.html#effect-sizes效果量"><i class="fa fa-check"></i><b>2.8</b> Effect sizes（效果量）</a></li>
+<li class="chapter" data-level="2.9" data-path="statistical-models.html"><a href="statistical-models.html#statistical-power統計檢定力"><i class="fa fa-check"></i><b>2.9</b> Statistical power（統計檢定力）</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Notes of Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="statistical-models" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Statistical Models</h1>
+<div id="why-do-we-build-statistical-models" class="section level2">
+<h2><span class="header-section-number">2.1</span> Why do we build statistical models?</h2>
+<ul>
+<li>我們對於 real-world processes 有興趣，但是我們通常無法直接研究 real-world processes，所以我們搜集資料來代表（represent）這個 processes，並運用這些資料來建立 statistical models。
+<ul>
+<li>我們將 real-world processes 合理地簡化成一個能夠代表它的 statistical model</li>
+</ul></li>
+<li>社會科學家建立 real-world processes 的模型，希望了解在特定的情況下，這些 processes 會如何運作。</li>
+<li><strong><em>Population</em></strong>: the collection of units to which we want to generalise a set of findings or a statistical model</li>
+<li><strong><em>Sample</em></strong>: the small subset of the population</li>
+</ul>
+</div>
+<div id="assessing-the-fit-of-a-simple-statistical-model-the-mean" class="section level2">
+<h2><span class="header-section-number">2.2</span> Assessing the fit of a simple statistical model: the mean</h2>
+<ul>
+<li><strong><em>Fit</em></strong>: the degree to which a statistical model represents the data collected</li>
+<li><strong><em>Deviance</em></strong>: the error in the model</li>
+<li><strong><em>Degree of freedom (df)</em></strong>: the number of ‘entities’ that are free to vary when estimating some kind of statistical parameter</li>
+<li>The measures of the ‘fit’
+<ul>
+<li><strong><em>Sum of squared errors</em></strong>
+<span class="math display">\[SS=\Sigma(x_i-\overline{x})^2\]</span></li>
+<li><strong><em>Variance (<span class="math inline">\(s^2\)</span>)</em></strong>: an estimate of average variability of a set of data
+<span class="math display">\[s^2 = \frac{SS}{N-1} = \frac{\Sigma(x_i-\overline{x})^2}{N-1}\]</span>
+<ul>
+<li>為何要除以<span class="math inline">\(N-1\)</span>？</li>
+<li>當我們要估計母體變異數/標準差時，會用樣本平均數做為母體平均數的估計，因此母體平均數就被決定了；當平均數被決定時，自由度為「樣本數-1」。</li>
+</ul></li>
+<li><strong><em>Standard deviation</em></strong>
+<span class="math display">\[s = \sqrt{\frac{\Sigma(x_i−\overline{x})^2)}{N−1}}\]</span></li>
+</ul></li>
+</ul>
+</div>
+<div id="the-general-equation-of-linear-statistical-models" class="section level2">
+<h2><span class="header-section-number">2.3</span> The general equation of (linear) statistical models</h2>
+<p><span class="math display">\[\text{outcome}_i = (\text{model}) + \text{error}_i\]</span>
+<span class="math display">\[\text{deviation} = \Sigma(\text{observed}-\text{model})^2\]</span></p>
+</div>
+<div id="inference-from-the-sample-to-the-population" class="section level2">
+<h2><span class="header-section-number">2.4</span> Inference from the sample to the population</h2>
+<div id="standard-error" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Standard error</h3>
+<ul>
+<li>從同一個母體抽樣數次，每次抽樣得到的樣本之間會有些差異</li>
+<li>我們藉由抽樣得到的樣本去推論母體的性質 <span class="math inline">\(\Longrightarrow\)</span> 了解樣本是否能夠良好地代表母體便很重要！</li>
+<li><strong><em>Sampling distribution</em></strong>: the frequency distribution of sample statistics (e.g., mean) from the same population
+<ul>
+<li>(e.g.) sampling distribution of sample means 樣本平均數抽樣分佈</li>
+</ul></li>
+<li><strong><em>Sampling variation</em></strong>: the extent to which a statistic varies in samples taken from the same population （從相同母體抽樣而來的樣本，其統計值差異的程度）</li>
+<li><strong><em>Standard error</em></strong>: the standard deviation of the sampling distribution of a statistic
+<ul>
+<li><strong><em>Standard error of the mean (SE)</em></strong>: the standard deviation of sample means</li>
+<li><strong><em>SE</em></strong> is a measure of how representative a sample is likely to be of the population
+<ul>
+<li>Large SE <span class="math inline">\(\Rightarrow\)</span> 這些樣本可能不太具有代表性</li>
+<li>Small SE <span class="math inline">\(\Rightarrow\)</span> 這些樣本可能比較能夠反映母體的性質</li>
+</ul></li>
+</ul></li>
+<li><strong><em>Central limit theorem (CLT)</em></strong>
+<ul>
+<li>當樣本數<span class="math inline">\(N\)</span>夠大時（通常以 <span class="math inline">\(&gt;30\)</span> 為基準），「樣本平均數抽樣分佈」會是平均數為母體平均數 <span class="math inline">\(\mu\)</span>，標準差（又稱「平均數的標準誤<strong><em>SE</em></strong>」）為 <span class="math inline">\(\sigma_{\overline{x}}=\frac{\sigma}{\sqrt{N}}\)</span> 的常態分佈。</li>
+<li>無關乎母體分佈本身是否為常態分佈。</li>
+</ul></li>
+</ul>
+</div>
+<div id="confidence-intervals" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Confidence intervals</h3>
+<ul>
+<li>除了 standard error 之外，另外一個去評估「樣本平均數」做為「母體平均數估計值」的精確性的方法，就是去計算一個我們認為真實的母體平均數的值會落在的一個範圍。<br />
+<span class="math inline">\(\Rightarrow\)</span> <strong><em>Confidence interval</em></strong>: 我們認為母體的真實值所會落在的一個範圍</li>
+<li>Confidence interval 具有一個性質：它會告訴我們這個範圍涵蓋到母體真實值的可能性。
+<ul>
+<li><strong><em>95% confidence interval</em></strong>: 我們重複取得樣本估計值很多次，且每次都建立一個 confidence interval，則其中 95% 的 confidence intervals 會涵蓋到母體真實值。</li>
+</ul></li>
+<li>如何建立 confidence interval？（以 95% confience interval 為例）
+<ul>
+<li>在 Z 分佈中（mean = 0, SD = 1），95% 資料的 z-scores 會落在 -1.96 與 1.96 之間。</li>
+<li>由 CLT 得知，當樣本數夠大時，樣本平均數的抽樣分佈會近似於常態分佈。</li>
+<li>我們可以藉由<span class="math display">\[z = \frac{X-\overline{X}}{SE}\]</span>將資料轉換成 Z 分佈；將 z-scores 的值帶入公式中，就可以求出對應的數值。</li>
+<li>Lower boundary of confidence interval <span class="math inline">\(= \overline{X}-(1.96 \times \text{SE})\)</span></li>
+<li>Upper boundary of confidence interval <span class="math inline">\(= \overline{X}+(1.96 \times \text{SE})\)</span></li>
+</ul></li>
+<li><strong>當 confidence interval 的間距很大時</strong><br />
+<span class="math inline">\(\Rightarrow\)</span> sample mean 可能跟 true mean 差距非常大<br />
+<span class="math inline">\(\Rightarrow\)</span> 代表這個 mean 無法很合適地代表母群</li>
+<li><strong>General form</strong> of confidence intervals<br />
+(<span class="math inline">\(p\)</span>: the probability value for the confidence interval)
+<ul>
+<li>Lower boundary of confidence interval <span class="math inline">\(=\overline{X}−\bigg(z_{\dfrac{1−p}{2}} \times \text{SE}\bigg)\)</span></li>
+<li>Upper boundary of confidence interval <span class="math inline">\(=\overline{X}+\bigg(z_{\dfrac{1−p}{2}} \times \text{SE}\bigg)\)</span></li>
+</ul></li>
+<li><strong>General form</strong> of confidence intervals when the sample size is small<br />
+(<span class="math inline">\(n\)</span>: the degree of freedom)
+<ul>
+<li>Lower boundary of confidence interval <span class="math inline">\(= \overline{X} - (t_{n-1} \times \text{SE})\)</span></li>
+<li>Upper boundary of confidence interval <span class="math inline">\(= \overline{X} + (t_{n-1} \times \text{SE})\)</span></li>
+</ul></li>
+<li><p>視覺化 confidence intervals（error bars）的好處：
+藉由比較樣本間平均數的 confidence intervals，我們可以稍微了解說這些樣本是否來自於同一個母群；當兩者的 confidence intervals 很少重疊時，代表這兩者很可能來自於不同的母群，比較能夠說這兩者有顯著差異。</p></li>
+<li>Why do we use .05?
+<ul>
+<li>我們現代使用的假設檢定，其實混合了 Fisher 與 Neyman &amp; Pearson 的方法:
+<ul>
+<li><strong>Fisher’s</strong>: using the probability value p as an index of the weight of evidence against a null hypothesis</li>
+<li><strong>Neyman &amp; Pearson’s</strong>: testing a null hypothesis against the alternative hypothesis</li>
+</ul></li>
+<li>當初 Fisher 出版統計學教科書的時候，為了節省空間，所提供的 critical values table 只包含了 .05, .02, .01 的值。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="test-statistic統計檢定量" class="section level2">
+<h2><span class="header-section-number">2.5</span> Test statistic（統計檢定量）</h2>
+<ul>
+<li>要測試我們建立的模型是否 fit 所蒐集到的資料，或檢驗我們的假設是否是一個對於資料的良好解釋，<u><strong><em>我們可以將 systematic variation 拿來跟 unsystematic variation 做比較</em></strong></u>。
+<span class="math display">\[\text{test statistic} = \frac{\text{variance explained by the model}}{\text{variance not explained by the model}} = \frac{\text{effect}}{\text{error}}\]</span></li>
+<li><p>Test statistic 是具有特定性質的統計量，更明確來說，我們通常知道它們的機率分配<br />
+<span class="math inline">\(\Rightarrow\)</span> 因此可以推算出得到特定數值的機率為多少<br />
+<span class="math inline">\(\Rightarrow\)</span> 當我們的模型愈能解釋資料時，test statistic 通常會愈大，得到這樣數值的機率會愈低<br />
+<span class="math inline">\(\Rightarrow\)</span> 當這個機率低到某個程度時（例如 <span class="math inline">\(&lt;.05\)</span>），我們比較有信心說我們的模型解釋了足夠的資料變異，因此我們的模型能夠反映母體的狀況</p></li>
+<li>What we can and cannot conclude from a significant test statistic?
+<ul>
+<li>The importance of an effect
+<ul>
+<li>非常小而不重要的效果，在樣本數很大時，仍然有可能顯著。</li>
+<li>即使結果顯著，不見得表示該結果的效果足夠。</li>
+</ul></li>
+<li>Non-significant results
+<ul>
+<li>Non-significant results 不表示虛無假設為真，也不表示「沒有效果」。</li>
+<li>Cohen 指出虛無假設不可能為真，因為從抽樣分佈來看，我們知道任兩個隨機樣本通常都會有差異，縱使差異非常非常小。</li>
+</ul></li>
+<li>Significant results
+<ul>
+<li>Significant results 也不表示虛無假設為錯誤的（因為統計檢定是基於<u><strong>機率推論</strong></u>的概念）。</li>
+<li>我們只能說，當檢定統計量顯著時，虛無假設為真的機率非常低。</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="one--and-two-tailed-tests" class="section level2">
+<h2><span class="header-section-number">2.6</span> One- and two-tailed tests</h2>
+<ul>
+<li><strong><em>One-tailed test</em></strong>: a directional hypothesis
+<ul>
+<li>如果我們的假設是有方向性的，那麼我們只需要比較小的 test statistic 就能夠得到顯著結果（給定 p value 相同的情況下，相較於沒有方向性的假設）。<br />
+<span class="math inline">\(\Rightarrow\)</span> One-tailed test 較 two-tailed test 更有 power</li>
+</ul></li>
+<li><strong><em>Two-tailed test</em></strong>: a non-directional hypothesis
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="fig/type-errors.png" alt="The difference between one- and two-tailed tests"  />
+<p class="caption">
+Figure 2.1: The difference between one- and two-tailed tests
+</p>
+</div></li>
+</ul>
+</div>
+<div id="type-i-and-type-ii-errors" class="section level2">
+<h2><span class="header-section-number">2.7</span> Type I and Type II errors</h2>
+<ul>
+<li><strong><em>Type I errors</em></strong>: 在母群當中其實沒有這個效果（虛無假設為真），但我們做出來的統計結果卻發現有效果（<strong>錯誤拒絕</strong>虛無假設）。
+<ul>
+<li>False positive 偽陽性</li>
+<li><span class="math inline">\(\alpha - \text{level}\)</span>: 犯下 type I errors 的機率（我們自己訂的標準）</li>
+</ul></li>
+<li><strong><em>Type II errors</em></strong>: 在母群當中其實有這個效果（虛無假設為偽），但我們做出來的統計結果卻沒有發現效果（<strong>錯誤接受</strong>虛無假設）。
+<ul>
+<li>False negative 偽陰性</li>
+<li><span class="math inline">\(\beta - \text{level}\)</span>: 犯下 type II errors 的機率（我們自己訂的標準）</li>
+</ul></li>
+</ul>
+</div>
+<div id="effect-sizes效果量" class="section level2">
+<h2><span class="header-section-number">2.8</span> Effect sizes（效果量）</h2>
+<ul>
+<li>除了了解效果存不存在之外（假設檢定），另外一個重要的議題在於：<u><strong>這個效果本身有多重要</strong></u>？</li>
+<li><strong><em>Effect size</em></strong>: an objective and (usually) standardised measure of the magnitude of observed effect
+<ul>
+<li>Standardised 的好處：可以比較不同研究中使用的不同變數之間的效果如何。</li>
+<li>統計分析得到的 effect size，也只是對於母群 effect size 的估計。</li>
+</ul></li>
+<li>APA 格式手冊建議所有心理學的發表都應該要報告 effect sizes。</li>
+<li>Some measures of effect size
+<ul>
+<li>Cohen’s <em>d</em></li>
+<li><em>Pearson’s correlation coefficient</em> <strong><em>r</em></strong></li>
+<li>Odds ratio</li>
+</ul></li>
+<li><u><strong>要估計母群 effect size，與三個統計性質有關</strong></u>：
+<ul>
+<li>Sample size (要能夠估計母群 effect size 所需的 sample size)</li>
+<li><span class="math inline">\(\alpha-\text{level}\)</span></li>
+<li>Statistical power</li>
+</ul></li>
+</ul>
+</div>
+<div id="statistical-power統計檢定力" class="section level2">
+<h2><span class="header-section-number">2.9</span> Statistical power（統計檢定力）</h2>
+<ul>
+<li><strong><em>Statistical power</em></strong>: the probability that a given test will find an effect assuming that one exists in the population（假設母群中有效果時，某檢定能夠偵測到那個效果的機率）
+<ul>
+<li><span class="math inline">\(1-\beta\)</span>（從 <span class="math inline">\(\beta\)</span> 的定義出發）</li>
+<li>正確拒絕虛無假設的機率</li>
+</ul></li>
+<li>Statistical power 的應用
+<ul>
+<li>計算檢定的統計檢定力
+<ul>
+<li>在「實驗」情境下：我們會先決定好 <span class="math inline">\(\alpha-\text{level}\)</span> 、知道我們的 sample size 有多大，從我們的樣本去估計出一個 effect size；藉由上述這些數值，可以計算出這個檢定的 power。 如果計算出的 power 夠大（通常是 0.8 以上），我們就可以比較有信心說能夠偵測到真正存在的效果；但若 power 偏低，我們或許要用更多的受試者去重複原先的實驗，以提升檢定的 power。</li>
+<li>計算實驗所需要的 sample size
+<ul>
+<li>先決定我們要的 <span class="math inline">\(\alpha-\text{level}\)</span> 與 <span class="math inline">\(\beta-\text{level}\)</span>（決定了 power），並藉由過去類似的研究估計一個我們希望在實驗中偵測到的 effect size<br />
+<span class="math inline">\(\Rightarrow\)</span>可以估算這個實驗需要的 sample size 有多大</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["note-Statistics.pdf", "note-Statistics.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
